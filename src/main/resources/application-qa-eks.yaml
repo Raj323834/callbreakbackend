@@ -1,0 +1,39 @@
+spring:
+  application:
+    name: Callbreak Game Logs
+    
+  data:
+    mongodb:
+      database: CallbreakGameStats
+      uri: mongodb://mongodevops:luci-666777888!!!@172.31.31.211:27017,172.31.27.191:27017,172.31.31.191:27017/admin?replicaSet=rs0
+  aws:
+    secretmanager:
+      secretName: NonProd/Mongo
+      region: ap-south-1
+      
+mongo-db:
+   connection-pool:
+     core: 10
+     max: 50
+     maxIdleTime: 30000
+     timeout: 30000
+      
+pubsub:
+  namespace: 65.1.71.26:9092,65.1.71.26:9093
+  topic: callbreak-gamelogs
+  group-id: callbreak-gamelogs-np-event-group
+  consumer-count: 4
+
+       
+server:
+   port: 3177
+
+management:
+  endpoint:
+    health:
+      probes:
+        enabled: true
+        
+consul:
+   url: http://3.7.76.192:8500
+   path: callbreakGameLogs/
